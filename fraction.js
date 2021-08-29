@@ -36,19 +36,19 @@ function parse(fractionString) {
 }
 
 function toString(fraction) {
-    let whole = 0
+    let whole = null
     let numerator = fraction.numerator
     let denominator = fraction.denominator
     let finalString = ""
 
-    if (numerator > denominator) {
+    if ((numerator >= denominator) || (numerator == 0)) {
         whole = Math.floor(numerator / denominator)
         numerator = numerator % denominator
     }
 
     const hasFractionalPart = numerator > 0
 
-    if (whole) {
+    if (whole != null) {
         finalString += whole
         if (hasFractionalPart) {
             finalString += "_"
@@ -92,3 +92,4 @@ function evaluate(expression) {
 exports.evaluate = evaluate
 exports.parse = parse
 exports.reduce = reduce
+exports.toString = toString

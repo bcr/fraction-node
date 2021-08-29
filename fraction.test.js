@@ -26,3 +26,12 @@ describe("parse", () => {
         expect(fraction.parse('3')).toStrictEqual({ numerator: 3, denominator: 1 })
     })
 })
+
+describe("toString", () => {
+    const testValues = [0, 1, 2]
+    testValues.forEach(value => {
+        it(`should work with ${value}`, () => {
+            expect(fraction.toString({ numerator: value, denominator: 1 })).toBe(value.toString())
+        })
+    })
+})
