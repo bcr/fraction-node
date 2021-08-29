@@ -18,3 +18,13 @@ Example run
 ? 2_3/8 + 9/8
 = 3_1/2
 ```
+
+## Setup
+
+Do this before running anything.
+
+`npm install`
+
+## Running tests
+
+`npm test`
