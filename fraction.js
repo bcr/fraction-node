@@ -25,13 +25,51 @@ function parse(fractionString) {
     return { numerator: whole * denominator + numerator, denominator: denominator }
 }
 
+function toString(fraction) {
+    let whole = 0
+    let numerator = fraction.numerator
+    let denominator = fraction.denominator
+    let finalString = ""
+
+    if (numerator > denominator) {
+        whole = Math.floor(numerator / denominator)
+        numerator = numerator % denominator
+    }
+
+    const hasFractionalPart = numerator > 0
+
+    if (whole) {
+        finalString += whole
+        if (hasFractionalPart) {
+            finalString += "_"
+        }
+    }
+
+    if (hasFractionalPart) {
+        finalString += numerator + "/" + denominator
+    }
+
+    return finalString
+}
+
 function evaluate(expression) {
     let parts = expression.split(/\s+/)
     const fraction1 = parse(parts[0])
     const operation = parts[1]
     const fraction2 = parse(parts[2])
+    let result = {}
 
-    return fraction2
+    switch (operation) {
+        case '*':
+            result = { numerator: fraction1.numerator * fraction2.numerator, denominator: fraction1.denominator * fraction2.denominator }
+            break
+
+        default:
+            // Freak out?
+            break
+    }
+
+    return toString(result)
 }
 
 // https://www.sitepoint.com/understanding-module-exports-exports-node-js/
