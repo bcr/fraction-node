@@ -1,18 +1,22 @@
 function parse(fractionString) {
-    const hasWhole = fractionString.includes('_')
-    const hasFraction = fractionString.includes('/')
+    const hasMixedDelimiter = fractionString.includes('_')
+    const hasFractionDelimiter = fractionString.includes('/')
     let whole = 0
     let numerator = 0
     let denominator = 1
     let fractionPart = fractionString
 
-    if (hasWhole) {
+    if (!hasMixedDelimiter && !hasFractionDelimiter) {
+        whole = parseInt(fractionString)
+    }
+
+    if (hasMixedDelimiter) {
         const parts = fractionString.split('_')
         whole = parseInt(parts[0])
         fractionPart = parts[1]
     }
 
-    if (hasFraction) {
+    if (hasFractionDelimiter) {
         const parts = fractionPart.split('/')
         numerator = parseInt(parts[0])
         denominator = parseInt(parts[1])

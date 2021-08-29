@@ -18,3 +18,7 @@ test('parses fraction', () => {
 test('parses mixed number', () => {
     expect(fraction.parse('3_3/4')).toStrictEqual({ numerator: 15, denominator: 4 })
 })
+
+test('parses whole number', () => {
+    expect(fraction.parse('3')).toStrictEqual({ numerator: 3, denominator: 1 })
+})
