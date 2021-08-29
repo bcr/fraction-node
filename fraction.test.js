@@ -13,6 +13,22 @@ describe("evaluate", () => {
             expect(fraction.evaluate('2_3/8 + 9/8')).toBe('3_1/2')
         })
     })
+
+    test('addition', () => {
+        expect(fraction.evaluate('1/3 + 1/2')).toBe('5/6')
+    })
+
+    test('subtraction', () => {
+        expect(fraction.evaluate('1/2 - 1/3')).toBe('1/6')
+    })
+
+    test('multiplication', () => {
+        expect(fraction.evaluate('1/2 * 1/3')).toBe('1/6')
+    })
+
+    test('division', () => {
+        expect(fraction.evaluate('1/2 / 1/3')).toBe('1_1/2')
+    })
 })
 
 describe("parse", () => {

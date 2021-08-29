@@ -74,12 +74,22 @@ function evaluate(expression) {
             result = { numerator: fraction1.numerator * fraction2.numerator, denominator: fraction1.denominator * fraction2.denominator }
             break
 
+        case '/':
+            result = { numerator: fraction1.numerator * fraction2.denominator, denominator: fraction1.denominator * fraction2.numerator }
+            break
+
         case '+':
             result = {
                 numerator: fraction1.numerator * fraction2.denominator + fraction2.numerator * fraction1.denominator,
                 denominator: fraction1.denominator * fraction2.denominator }
             break;
 
+        case '-':
+            result = {
+                numerator: fraction1.numerator * fraction2.denominator - fraction2.numerator * fraction1.denominator,
+                denominator: fraction1.denominator * fraction2.denominator }
+            break;
+    
         default:
             // Freak out?
             break
