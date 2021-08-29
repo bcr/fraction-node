@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/bcr/fraction-node/issues"
   },
-  "homepage": "https://github.com/bcr/fraction-node#readme"
+  "homepage": "https://github.com/bcr/fraction-node#readme",
+  "devDependencies": {
+    "jest": "^27.1.0"
+  }
 }
