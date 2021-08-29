@@ -7,7 +7,7 @@ test('computes first example', () => {
     expect(fraction.evaluate('1/2 * 3_3/4')).toBe('1_7/8')
 })
 
-test.skip('computes second example', () => {
+test('computes second example', () => {
     expect(fraction.evaluate('2_3/8 + 9/8')).toBe('3_1/2')
 })
 

@@ -1,3 +1,13 @@
+// https://stackoverflow.com/questions/4652468/is-there-a-javascript-function-that-reduces-a-fraction
+// Is that too lazy?
+function reduce(fraction) {
+    const gcd = function gcd(a,b) {
+        return b ? gcd(b, a%b) : a
+    }
+    finalGcd = gcd(fraction.numerator, fraction.denominator);
+    return { numerator: fraction.numerator / finalGcd, denominator: fraction.denominator / finalGcd }
+}
+
 function parse(fractionString) {
     const hasMixedDelimiter = fractionString.includes('_')
     const hasFractionDelimiter = fractionString.includes('/')
@@ -64,14 +74,21 @@ function evaluate(expression) {
             result = { numerator: fraction1.numerator * fraction2.numerator, denominator: fraction1.denominator * fraction2.denominator }
             break
 
+        case '+':
+            result = {
+                numerator: fraction1.numerator * fraction2.denominator + fraction2.numerator * fraction1.denominator,
+                denominator: fraction1.denominator * fraction2.denominator }
+            break;
+
         default:
             // Freak out?
             break
     }
 
-    return toString(result)
+    return toString(reduce(result))
 }
 
 // https://www.sitepoint.com/understanding-module-exports-exports-node-js/
 exports.evaluate = evaluate
 exports.parse = parse
+exports.reduce = reduce
