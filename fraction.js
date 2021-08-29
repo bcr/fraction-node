@@ -37,7 +37,8 @@ function parse(fractionString) {
 
 function toString(fraction) {
     let whole = null
-    let numerator = fraction.numerator
+    const isNegative = fraction.numerator < 0
+    let numerator = Math.abs(fraction.numerator)
     let denominator = fraction.denominator
     let finalString = ""
 
@@ -47,6 +48,10 @@ function toString(fraction) {
     }
 
     const hasFractionalPart = numerator > 0
+
+    if (isNegative) {
+        finalString += '-'
+    }
 
     if (whole != null) {
         finalString += whole

@@ -29,6 +29,10 @@ describe("evaluate", () => {
     test('division', () => {
         expect(fraction.evaluate('1/2 / 1/3')).toBe('1_1/2')
     })
+
+    test('negative result', () => {
+        expect(fraction.evaluate('1 - 2')).toBe('-1')
+    })
 })
 
 describe("parse", () => {
