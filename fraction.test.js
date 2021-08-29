@@ -4,12 +4,14 @@ test('does nothing', () => {
 })
 
 describe("evaluate", () => {
-    test('computes first example', () => {
-        expect(fraction.evaluate('1/2 * 3_3/4')).toBe('1_7/8')
-    })
+    describe("examples", () => {
+        test('computes first example', () => {
+            expect(fraction.evaluate('1/2 * 3_3/4')).toBe('1_7/8')
+        })
 
-    test('computes second example', () => {
-        expect(fraction.evaluate('2_3/8 + 9/8')).toBe('3_1/2')
+        test('computes second example', () => {
+            expect(fraction.evaluate('2_3/8 + 9/8')).toBe('3_1/2')
+        })
     })
 })
 
@@ -28,10 +30,12 @@ describe("parse", () => {
 })
 
 describe("toString", () => {
-    const testValues = [0, 1, 2]
-    testValues.forEach(value => {
-        it(`should work with ${value}`, () => {
-            expect(fraction.toString({ numerator: value, denominator: 1 })).toBe(value.toString())
+    describe("whole numbers", () => {
+        const testValues = [0, 1, 2]
+        testValues.forEach(value => {
+            it(`should work with ${value}`, () => {
+                expect(fraction.toString({ numerator: value, denominator: 1 })).toBe(value.toString())
+            })
         })
     })
 })
