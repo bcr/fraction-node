@@ -25,6 +25,10 @@ Do this before running anything.
 
 `npm install`
 
+## Running interactive prompt
+
+`node .`
+
 ## Running tests
 
 `npm test`
