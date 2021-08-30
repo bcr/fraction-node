@@ -30,6 +30,10 @@ describe("evaluate", () => {
         expect(fraction.evaluate('1/2 / 1/3')).toBe('1_1/2')
     })
 
+    test('negative division', () => {
+        expect(fraction.evaluate('-1/2 / 1/3')).toBe('-1_1/2')
+    })
+
     test('negative result', () => {
         expect(fraction.evaluate('1 - 2')).toBe('-1')
     })
@@ -38,6 +42,10 @@ describe("evaluate", () => {
 describe("parse", () => {
     test('parses fraction', () => {
         expect(fraction.parse('1/2')).toStrictEqual({ numerator: 1, denominator: 2 })
+    })
+
+    test('parses negative fraction', () => {
+        expect(fraction.parse('-1/2')).toStrictEqual({ numerator: -1, denominator: 2 })
     })
 
     test('parses mixed number', () => {

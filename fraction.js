@@ -8,6 +8,13 @@ function reduce(fraction) {
     return { numerator: fraction.numerator / finalGcd, denominator: fraction.denominator / finalGcd }
 }
 
+// For whatever reason, the denominator could be negative. This will help.
+function normalizeSign(fraction) {
+    const multiplier = (fraction.denominator < 0) ? -1 : +1
+
+    return { numerator: fraction.numerator * multiplier, denominator: fraction.denominator * multiplier }
+}
+
 function parse(fractionString) {
     const hasMixedDelimiter = fractionString.includes('_')
     const hasFractionDelimiter = fractionString.includes('/')
@@ -19,6 +26,7 @@ function parse(fractionString) {
 
     if (isNegative) {
         fractionString = fractionString.substring(1)
+        fractionPart = fractionString
     }
 
     if (!hasMixedDelimiter && !hasFractionDelimiter) {
@@ -41,6 +49,8 @@ function parse(fractionString) {
 }
 
 function toString(fraction) {
+    fraction = normalizeSign(fraction)
+
     let whole = null
     const isNegative = fraction.numerator < 0
     let numerator = Math.abs(fraction.numerator)
