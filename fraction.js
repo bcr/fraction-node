@@ -11,10 +11,15 @@ function reduce(fraction) {
 function parse(fractionString) {
     const hasMixedDelimiter = fractionString.includes('_')
     const hasFractionDelimiter = fractionString.includes('/')
+    const isNegative = fractionString[0] == '-'
     let whole = 0
     let numerator = 0
     let denominator = 1
     let fractionPart = fractionString
+
+    if (isNegative) {
+        fractionString = fractionString.substring(1)
+    }
 
     if (!hasMixedDelimiter && !hasFractionDelimiter) {
         whole = parseInt(fractionString)
@@ -32,7 +37,7 @@ function parse(fractionString) {
         denominator = parseInt(parts[1])
     }
 
-    return { numerator: whole * denominator + numerator, denominator: denominator }
+    return { numerator: (whole * denominator + numerator) * (isNegative ? -1 : +1), denominator: denominator }
 }
 
 function toString(fraction) {
