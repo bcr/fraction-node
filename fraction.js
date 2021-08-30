@@ -123,7 +123,10 @@ function evaluate(expression) {
 }
 
 // https://www.sitepoint.com/understanding-module-exports-exports-node-js/
-exports.evaluate = evaluate
-exports.parse = parse
-exports.reduce = reduce
-exports.toString = toString
+// https://www.freecodecamp.org/news/node-module-exports-explained-with-javascript-export-function-examples/
+module.exports = {
+    evaluate,
+    parse,
+    reduce,
+    toString,
+}
