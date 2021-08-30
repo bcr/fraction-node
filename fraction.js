@@ -84,6 +84,11 @@ function toString(fraction) {
 
 function evaluate(expression) {
     let parts = expression.split(/\s+/)
+
+    if (parts.length != 3) {
+        return("Invalid expression")
+    }
+
     const fraction1 = parse(parts[0])
     const operation = parts[1]
     const fraction2 = parse(parts[2])
@@ -111,8 +116,7 @@ function evaluate(expression) {
             break;
     
         default:
-            // Freak out?
-            break
+            return "Invalid expression"
     }
 
     return toString(reduce(result))

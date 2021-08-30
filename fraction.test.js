@@ -37,6 +37,15 @@ describe("evaluate", () => {
     test('negative result', () => {
         expect(fraction.evaluate('1 - 2')).toBe('-1')
     })
+
+    describe('invalid inputs', () => {
+        const testValues = ["cheese", "1 % 2"]
+        testValues.forEach(value => {
+            it(`should not work with '${value}'`, () => {
+                expect(fraction.evaluate(value)).toBe('Invalid expression')
+            })
+        })
+    })
 })
 
 describe("parse", () => {
