@@ -1,8 +1,5 @@
 const fraction = require('./fraction');
 
-test('does nothing', () => {
-})
-
 describe("evaluate", () => {
     describe("examples", () => {
         test('computes first example', () => {
